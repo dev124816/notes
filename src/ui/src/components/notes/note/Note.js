@@ -1,11 +1,15 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import {useDispatch} from 'react-redux'
+import {getNotes} from '../../../redux/actions'
 import NoteButton from './NoteButton'
 import config from '../../../config.json'
 import '../../../style.css'
 
 
 const Note = (props) => {
+    const dispatch = useDispatch()
+
     const [title, setTitle] = useState(props.title)
     const [content, setContent] = useState(props.content)
 
@@ -14,13 +18,25 @@ const Note = (props) => {
             title: title,
             content: content
         })
-            .then((response) => window.location.reload())
+            .then((response) => {
+                axios.get(config.url + '/notes/')
+                    .then((response) => {
+                        getNotes.payload = response.data
+                        dispatch(getNotes)
+                    }).catch((error) => console.error(error))
+            })
             .catch((error) => console.error(error))
     }
 
     const deleteNote = (id) => {
         axios.delete(config.url + `/notes/${id}`)
-            .then((response) => window.location.reload())
+            .then((response) => {
+                axios.get(config.url + '/notes/')
+                    .then((response) => {
+                        getNotes.payload = response.data
+                        dispatch(getNotes)
+                    }).catch((error) => console.error(error))
+            })
             .catch((error) => console.error(error))
     }
 
