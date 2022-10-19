@@ -21,11 +21,13 @@ Developed by Salim Mghari
 #### Server:
 
 > - `cd src/`
+> - `npm install`
 > - `npm start`
 
 #### Client:
 
 > - `cd src/ui/`
+> - `npm install`
 > - `npm start`
 
 ---
