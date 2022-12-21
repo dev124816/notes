@@ -5,6 +5,23 @@
     color: #FFFFFF;   
 }
 
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: none;
+}
+
+button {
+    border: none;
+}
+
 .layout {
     padding: 20px 40px;
 }
