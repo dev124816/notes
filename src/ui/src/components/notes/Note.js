@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {useDispatch} from 'react-redux'
-import {getNotes} from '../../../redux/actions'
-import NoteButton from './NoteButton'
-import config from '../../../config.json'
-import '../../../style.css'
+import {getNotes} from '../../redux/actions'
+import Input from '../Input'
+import Button from '../Button'
+import config from '../../config.json'
+import '../../style.css'
 
 
 const Note = (props) => {
@@ -42,30 +43,31 @@ const Note = (props) => {
 
     return (
         <div className="note-container">
-            <input 
-                className="note-title"
-                type="text"  
+            <Input 
                 defaultValue={props.title} 
+                placeholder="Title"
                 onChange={(event) => setTitle(event.target.value)}
             />
-            <input 
-                className="note"
-                type="text"  
+            <Input 
+                height={200}
                 defaultValue={props.content} 
+                placeholder="Content"
                 onChange={(event) => setContent(event.target.value)}
             />
-            <NoteButton 
-                className="note-delete-button" 
-                onClick={(event) => deleteNote(props.id)}
-            >
-                Delete
-            </NoteButton>
-            <NoteButton 
-                className="note-update-button" 
-                onClick={(event) => updateNote(props.id)}
-            >
-                Update
-            </NoteButton>
+            <div className="note-actions-container">
+                <Button 
+                    backgroundColor="#F14140"
+                    onClick={(event) => deleteNote(props.id)}
+                >
+                    Delete
+                </Button>
+                <Button 
+                    backgroundColor="#F2B231"
+                    onClick={(event) => updateNote(props.id)}
+                >
+                    Update
+                </Button>
+            </div>
         </div>
     )
 }

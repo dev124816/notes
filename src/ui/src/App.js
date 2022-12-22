@@ -8,6 +8,7 @@ import {
     Route
 } from 'react-router-dom'
 import NotesScreen from './components/screens/NotesScreen'
+import CreateNoteScreen from './components/screens/CreateNoteScreen'
 
 
 const store = createStore(reducer);
@@ -18,6 +19,7 @@ const App = (props) => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<NotesScreen />} />
+                    <Route path="/create" element={<CreateNoteScreen />} />
                 </Routes>
             </BrowserRouter>
         </Provider>

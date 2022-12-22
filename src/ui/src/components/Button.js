@@ -1,10 +1,11 @@
 import React from 'react'
 
 
-const NoteButton = (props) => {
+const Button = (props) => {
     return (
         <button 
-            className={props.className} 
+            className="button" 
+            style={{backgroundColor: props.backgroundColor}}
             onClick={props.onClick}
         >
             {props.children}
@@ -12,4 +13,4 @@ const NoteButton = (props) => {
     )
 }
 
-export default NoteButton
+export default Button
